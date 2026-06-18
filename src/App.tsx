@@ -1,122 +1,123 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import CardManifestacao from "./components/CardManifestacao";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+      {/* Header */}
+      <header className="app-header">
+        <div className="container">
+          <span className="app-label mb-3">
+            <i className="bi bi-megaphone-fill me-2"></i>
+            Sistema de Ouvidoria Pública
+          </span>
+          <h1 className="fw-bold mt-2">Painel de Manifestações</h1>
+          <p className="text-muted">
+            Visualização do componente de exibição de manifestações cidadãs -
+            TCC Antonio Ray
           </p>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      </header>
 
-      <div className="ticks"></div>
+      {/* Estatísticas */}
+      <section className="stats-section">
+        <div className="container">
+          <div className="row g-3">
+            <div className="col-6 col-md-3">
+              <div className="stat-card">
+                <i className="bi bi-clipboard-data"></i>
+                <span className="stat-number">4</span>
+                <span className="stat-label">Total</span>
+              </div>
+            </div>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+            <div className="col-6 col-md-3">
+              <div className="stat-card">
+                <i className="bi bi-hourglass-split"></i>
+                <span className="stat-number">2</span>
+                <span className="stat-label">Pendentes</span>
+              </div>
+            </div>
+
+            <div className="col-6 col-md-3">
+              <div className="stat-card">
+                <i className="bi bi-arrow-repeat"></i>
+                <span className="stat-number">1</span>
+                <span className="stat-label">Em andamento</span>
+              </div>
+            </div>
+
+            <div className="col-6 col-md-3">
+              <div className="stat-card">
+                <i className="bi bi-check-circle"></i>
+                <span className="stat-number">1</span>
+                <span className="stat-label">Resolvidas</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      {/* Cards */}
+      <section className="cards-section">
+        <div className="container">
+          <h5 className="section-title mb-4">
+            <i className="bi bi-list-ul me-2"></i>
+            Manifestações Recentes
+          </h5>
+          <div className="row">
+            <div className="col-md-6 col-lg-4">
+              <CardManifestacao
+                tipo="Reclamação"
+                status="Pendente"
+                descricao="Buraco na calçada da Rua das Flores próximo ao número 142, representando risco para pedestres."
+                dataAbertura="10/06/2026"
+                protocolo="OUV-2026-001"
+              />
+            </div>
+
+            <div className="col-md-6 col-lg-4">
+              <CardManifestacao
+                tipo="Sugestão"
+                status="Em andamento"
+                descricao="Instalação de lixeiras de coleta seletiva nas praças públicas do bairro Centro."
+                dataAbertura="12/06/2026"
+                protocolo="OUV-2026-002"
+                destacado
+              />
+            </div>
+
+            <div className="col-md-6 col-lg-4">
+              <CardManifestacao
+                tipo="Elogio"
+                status="Resolvido"
+                descricao="Excelente atendimento da equipe de limpeza urbana durante o evento na Praça Central."
+                dataAbertura="14/06/2026"
+                protocolo="OUV-2026-003"
+              />
+            </div>
+
+            <div className="col-md-6 col-lg-4">
+              <CardManifestacao
+                tipo="Denúncia"
+                status="Pendente"
+                descricao="Descarte irregular de resíduos em terreno baldio na Rua Sete de Setembro."
+                dataAbertura="15/06/2026"
+                protocolo="OUV-2026-004"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="app-footer">
+        <div className="container text-center">
+          <small>
+            Atividade 2 - Tecnologias Front-End | Pós Graduação em
+            Desenvolvimento Web e Mobile (IF Sudeste MG) - 2026.1
+          </small>
+        </div>
+      </footer>
     </>
-  )
+  );
 }
-
-export default App
