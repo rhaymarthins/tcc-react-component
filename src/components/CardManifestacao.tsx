@@ -1,19 +1,12 @@
-interface Props {
-  tipo: "Reclamação" | "Sugestão" | "Elogio" | "Denúncia";
-  status: "Pendente" | "Em andamento" | "Resolvido";
-  descricao: string;
-  dataAbertura: string;
-  protocolo: string;
-  destacado?: boolean;
-}
+import type { Manifestacao } from "../data/tipos";
 
-function obterCorStatus(status: Props["status"]): string {
+function obterCorStatus(status: Manifestacao["status"]): string {
   if (status === "Pendente") return "warning";
   if (status === "Em andamento") return "primary";
   return "success";
 }
 
-function obterCorTipo(tipo: Props["tipo"]): string {
+function obterCorTipo(tipo: Manifestacao["tipo"]): string {
   if (tipo === "Reclamação") return "danger";
   if (tipo === "Denúncia") return "dark";
   if (tipo === "Sugestão") return "info";
@@ -27,7 +20,7 @@ export default function CardManifestacao({
   dataAbertura,
   protocolo,
   destacado = false,
-}: Props) {
+}: Manifestacao) {
   return (
     <div
       className={`card shadow-sm mb-4 ${destacado ? "border-primary border-2" : ""}`}
