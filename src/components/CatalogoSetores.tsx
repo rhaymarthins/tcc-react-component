@@ -26,7 +26,7 @@ const SETORES_INICIAIS: Setor[] = [
   },
   {
     id: "4",
-    nome: "Secretaria de Limpeza Urbana",
+    nome: "Secretaria de Educação",
     responsavel: "Joana Ferreira",
     manifestacoesAtivas: 3,
     icone: "bi-trash-fill",
